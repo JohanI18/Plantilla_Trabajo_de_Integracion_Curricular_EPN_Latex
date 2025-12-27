@@ -1,0 +1,506 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   CONFIGURACIONES GENERALES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Formato de Hoja e Idioma
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listfiles
+% Letra a 11pt, Papel INEN A4  SE REALIZO CAMBIO
+\documentclass[11pt,a4paper]{report}
+% Documento escrito en Español
+\usepackage[activeacute,spanish]{babel}
+% Caracteres en Español
+\usepackage[utf8]{inputenc}
+% Otros caracteres Español
+\usepackage[T1]{fontenc}
+% Márgenes de página
+\usepackage[
+    a4paper,
+    left=3cm,
+    top=3cm,
+    right=2.5cm,
+    bottom=2.5cm,
+    footskip=1.5cm]{geometry} 
+% Tiempo (útil para ver fecha y hora de compilación)
+\usepackage{datetime}
+% Formato de Fecha de Caratula *personalizado
+\newdateformat{epnDate}{\monthname[\THEMONTH] \THEYEAR} 
+% Punto decimal - Ejemplo: 2.54
+\spanishdecimal{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Estilo bibliografía
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Quotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{csquotes}
+\usepackage{url}
+\urlstyle{same}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Letra e Interlineado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete de fuentes (Arial, Times, Courier)
+\usepackage{helvet}
+% Arial para el cuerpo de texto
+\renewcommand{\familydefault}{\sfdefault}
+% Interlineado
+\linespread{1.5}
+% Fuentes 24pt *personalizada
+%   Ejemplo de uso: {\sizeveinticuatro Palabras con tamaño veinticuatro} 
+\newcommand{\sizeveinticuatro}{\fontsize{24pt}{20pt}\selectfont}
+% Fuentes 16pt *personalizada
+%   Ejemplo de uso: {\sizedieciseis Palabras con tamaño dieciseis}
+\newcommand{\sizedieciseis}{\fontsize{16pt}{20pt}\selectfont} 
+% Fuentes 14pt *personalizada
+%   Ejemplo de uso: {\sizecatorce Palabras con tamaño catorce}
+\newcommand{\sizecatorce}{\fontsize{14}{20pt}\selectfont}
+% Fuentes 12pt *personalizada
+%   Ejemplo de uso: {\sizedoce Palabras con tamaño doce}
+\newcommand{\sizedoce}{\fontsize{12}{20pt}\selectfont}
+% Sin indentado (primera línea francesa) para párrafos
+\setlength\parindent{0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Cabecera y Pie de Página
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete de manipulación de Cabeceras y Pies de Página
+\usepackage{fancyhdr}
+% Estilo plano
+\pagestyle{fancyplain}
+% Control de Cabecera y Pie de Página 
+\fancyhf{}
+% Colocación de números de página en parte inferior centrado
+\fancyfoot[C]{\thepage}
+% Sin línea de Cabecera 
+\renewcommand{\headrulewidth}{0pt}
+% Corrige la posición del número en la Cabecera 
+\geometry{headheight=15pt}
+% Activar Interlineado para pie de página 
+\usepackage{setspace}
+% Mismo alto de notas al pie de página desde el final de la hoja 
+\flushbottom
+% Interlineado entre notas al pie de página 
+\setlength{\footnotesep}{0.4cm}
+% Espacio entre cuerpo de texto y pie de página 
+\setlength{\skip\footins}{1.1cm}
+% Utilidades Justificado de párrafos
+\usepackage{ragged2e}
+% Utilidad para estilo de marcas de pie de página
+\usepackage{scrextend}
+% Estilo de numero de footcite en texto
+\deffootnotemark{\textsuperscript{[\thefootnotemark]}}
+% Estilo de número de footcite al pie de la página
+\deffootnote[3em]{3em}{0em}{
+    \parbox[b][\height][r]{2.3em}
+    {\footnotesize\textsuperscript{[\thefootnotemark]}}
+    \enskip
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Formato de Títulos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete de manipulación de Títulos
+\usepackage{titlesec}
+%   Capítulos
+\titleformat{\chapter}[hang] 
+{\bfseries\sizedieciseis}
+{\MakeUppercase{}\ \thechapter}
+{5.0mm}{\sizedieciseis\MakeUppercase}
+%   Subcapítulos 1
+\titleformat{\section}[hang]  
+{\bfseries\sizecatorce}
+{\thesection }
+{5.0mm}{\sizecatorce\MakeUppercase}
+%   Subcapítulos 2
+\titleformat{\subsection}[hang]  
+%   SE HIZO CAMBIO TAMAÑO LETRA y se quito uppercase
+{\bfseries\sizecatorce}
+{\thesubsection }
+{5.0mm}{\sizecatorce}
+%   Subcapítulos 3
+\titleformat{\subsubsection}[hang]  
+%   SE HIZO CAMBIO TAMAÑO LETRA
+{\bfseries\sizedoce}
+{\thesubsubsection }
+{5.0mm}{\sizedoce}
+%   Subcapítulos 4
+\titleformat{\paragraph}[hang]
+{\em\sizedoce}
+{\theparagraph} 
+{5.0mm}{\sizedoce}
+%   Otros Títulos
+\newcommand{\titulos}{\sf\bf\sizecatorce\centerline}
+\newcommand{\titulosizq}{\sf\bf\sizecatorce}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Profundidad de la Numeración
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Desde Capítulos hasta Subcapítulos 4
+\setcounter{secnumdepth}{3}
+ % Profundidad de la Tabla de Contenido
+\setcounter{tocdepth}{2}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   ¡¡¡ IMPORTANTE !!!
+%   Hiperenlaces e Información para el PDF generado
+%
+%   Cambiar la información de pdfauthor, pdftitle, pdfsubject y pdfcreator
+%   de acuerdo al proyecto de titulación
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{float} % Posición flotante (ej. imágenes) 
+\usepackage[breaklinks]{hyperref} 
+\hypersetup{ %hiperenlaces
+    pdfauthor={Nombre},
+    pdftitle={Título},
+    pdfsubject={Descripción},
+    pdfkeywords={Keyword1, keyword2},
+    colorlinks, 
+    citecolor=black, 
+    filecolor=black, 
+    linkcolor=black, 
+    urlcolor=black 
+}
+% Los hiperenlaces apuntan a las figuras, no a los nombres de las figuras 
+\usepackage[all]{hypcap}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Notación URL comentado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{url}
+%\makeatletter
+%\g@addto@macro{\UrlBreaks}{
+%\UrlOrds\do\-\do\_\do\/\do\:\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0\do\&}
+%\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Formato de la Tabla de Contenido y Nombres en Español
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[titles]{tocloft}
+% Separación antes del titulo
+\setlength\cftbeforetoctitleskip{0pt}
+% Separación después del titulo
+\setlength\cftaftertoctitleskip{1cm}
+\renewcommand\cftchappresnum{\chaptername\space}
+% Formato: Capítulo # - Título del Capítulo 
+\renewcommand\cftchappresnum{ }
+% Separación del Número de Capítulo
+\setlength{\cftchapnumwidth}{2em}
+\newcommand\centrarcelda[1]{\let\temp=\\%
+  #1%
+    \let\\=\temp
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Formato de Tablas 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{array}
+\usepackage{calc}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{tabulary}
+% Tablas que ocupan más de una página
+\usepackage{longtable}
+% Para cambiar interlineado del texto de la tabla
+\usepackage{setspace}
+\setlength\tymin{5cm}
+ % Varias filas
+\usepackage{multirow}
+\definecolor{bluetable}{RGB}{175,198,233}
+ % Color de líneas de Tablas
+\arrayrulecolor{bluetable}
+ % Grosor de líneas de Tablas
+\setlength{\arrayrulewidth}{.9pt}
+\usepackage{hhline}
+% Márgenes personalizados en landscape
+\makeatletter
+\def\fudge#1#2{%
+\addtolength\textheight{#1}%
+\@colroom\textheight
+\vsize\textheight
+\@colht\textheight
+\def\LS@rot{%
+  \setbox\@outputbox\vbox{\hbox{\kern-#2\rotatebox{90}{\box\@outputbox}}}}%
+\clearpage}
+\makeatother
+% Tamaño de letra small para tablas
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\small}
+\AtBeginEnvironment{tabular}{\small}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Hojas Horizontales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Posición Horizontal para ciertas páginas * útil para tablas largas
+\usepackage{pdflscape}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Representar Código Fuente
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Necesario para la inclusión de código fuente 
+\usepackage{listings}
+% Necesario para resaltado de la sintaxis
+\usepackage{color}
+% Colores de resaltado 
+\definecolor{letraAzul}{cmyk}{1,0.5,0,0.5}
+\definecolor{lstrule}{RGB}{158,180,204}
+\definecolor{fondo}{RGB}{245,245,250}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{darkviolet}{rgb}{0.5,0,0.4}
+\definecolor{darkpink}{rgb}{0.8,0.3,0.5}
+\lstset{ %
+  language=Java,
+  basicstyle=\footnotesize\color{letraAzul},
+  numbers=left,
+  numberstyle=\scriptsize\color{gray},
+  numberfirstline=true,
+  firstnumber=1,
+  stepnumber=5,
+  numbersep=8pt,
+  backgroundcolor=\color{fondo},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  rulecolor=\color{lstrule},
+  tabsize=4,
+  captionpos=t,
+  breaklines=true,
+  breakatwhitespace=false,
+  title=\lstname,
+  keywordstyle=\bfseries\color{darkviolet},
+  commentstyle=\color{gray},
+  stringstyle=\color{darkpink},
+  escapeinside={\%*}{*)},
+  morekeywords={*,...}
+  inputencoding=utf8,
+  emphstyle=\color{red},
+  extendedchars=true,
+  literate={á}{{\'a}}1
+         {é}{{\'e}}1
+         {í}{{\'i}}1
+         {ó}{{\'o}}1
+         {ú}{{\'u}}1
+         {ñ}{{\~n}}1
+}
+% !Hack para estilo
+\makeatletter
+\gdef\lst@SkipOrPrintLabel{%
+    \ifnum\lst@skipnumbers=\z@
+        \global\advance\lst@skipnumbers-\lst@stepnumber\relax
+        \lst@PlaceNumber
+        \lst@numberfirstlinefalse
+    \else
+        \lst@ifnumberfirstline
+            {\def\thelstnumber{\@arabic\c@lstnumber}\lst@PlaceNumber}%
+            \lst@numberfirstlinefalse
+        \else
+            {\def\thelstnumber{-}\lst@PlaceNumber}%
+        \fi
+    \fi
+\global\advance\lst@skipnumbers\@ne}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Imágenes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancybox}
+% Paquete de manipulación de Imágenes
+\usepackage{graphicx,type1cm,eso-pic}
+\usepackage[
+    font=small,
+    format=plain,
+    labelfont=bf,up,
+    justification=default,
+    compatibility=false]{caption}
+% Letras distintas para los captions de las imágenes
+% Hyphenation con texttt
+\newcommand*\justifyCaption{%
+  \fontdimen2\font=0.4em% spacio entre líneas
+  \fontdimen3\font=0.2em% ajuste entre líneas
+  \fontdimen4\font=0.1em% ajuste entre líneas
+  \fontdimen7\font=0.1em% espacio extra
+  \hyphenchar\font=`\-% permitir hyphenation
+}
+% Fin Hyphenation con texttt
+
+\definecolor{ShadowColor}{RGB}{128,128,128}
+
+ % ShadowBox para páginas falsas
+\makeatletter
+\newcommand\Cshadowbox{\VerbBox\@Cshadowbox}
+\def\@Cshadowbox#1{%
+  \setbox\@fancybox\hbox{\fbox{#1}}%
+  \leavevmode\vbox{%
+    \offinterlineskip
+    \dimen@=\shadowsize
+    \advance\dimen@ .5\fboxrule
+    \hbox{\copy\@fancybox\kern.5\fboxrule\lower\shadowsize\hbox{%
+      \color{ShadowColor}\vrule \@height\ht\@fancybox \@depth\dp\@fancybox 
+\@width\dimen@}}%
+    \vskip\dimexpr-\dimen@+0.5\fboxrule\relax
+    \moveright\shadowsize\vbox{%
+      \color{ShadowColor}\hrule \@width\wd\@fancybox \@height\dimen@}}}
+\makeatother
+
+ % subfloats
+\usepackage[list=true]{subcaption}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Marca de Agua para Borrador 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!!! Quitar cuando sea entregable final
+%\makeatletter
+%\AddToShipoutPicture{%
+%\setlength{\@tempdimb}{.5\paperwidth}%
+%\setlength{\@tempdimc}{.5\paperheight}%
+%\setlength{\unitlength}{1pt}%
+%\put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+%\makebox(-50,200){\rotatebox{45}{\textcolor[gray]{0.95}%
+% Alterar
+%{\fontsize{3cm}{3cm}\selectfont{Borrador}}}}%
+%\makebox(50,0){\rotatebox{45}{\textcolor[gray]{0.95}%
+%{\fontsize{2cm}{2cm}\selectfont{\today}}}}
+%\makebox(-600,-0){\rotatebox{90}{\textcolor[gray]{0.95}%
+%{\fontsize{0.7cm}{0.7cm}\selectfont{\textcopyright 
+%Copyright 2012 - Paúl Gualotuña - EPN / Facultad de Ingeniería de Sistemas}}}}
+%}%
+%}
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Glosario de términos y acrónimos 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Paquete necesario reemplazo de datatool-base.sty
+\usepackage{datatool}
+ %%%% Los paquetes glossaries y xindy deben estar instalados
+\usepackage[toc,acronym,smallcaps,xindy]{glossaries}
+ % Convierte la primera letra de las palabras a Mayúscula
+\usepackage{mfirstuc}
+ % Primera letra de palabras de "glosario" a Mayúsculas
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
+ % Glosario en forma de árbol indizado
+\usepackage{glossary-super}
+ % Generar Glosario
+
+
+ % Enlace al documento de glosarios * archivo: glosario.tex
+%\input{glosario}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   ¡¡¡ HACKS !!! 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Listas Enumeradas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modificar las listas enumeradas
+\usepackage{enumitem}
+% litem permite crear un titulo en negrilla para elementos de 
+% una lista - Ejemplo de uso: 
+%   \begin{enumerate}
+%       \litem{Título de elemento de la lista 1.-}
+%       \litem{Título de elemento de la lista 2.-}
+%       \litem{Título de elemento de la lista 3.-}
+%   \end{enumerate}
+\newcommand\litem[1]{\item{\bfseries #1\enspace}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Indentación extra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% myindent permite añadir indentación extra personalizada a 
+% cualquier bloque de texto deseado - Ejemplo de uso:
+%   \begin{myindent}{1cm}
+%       Este es un cuerpo de texto que va a ser indentado 1cm.
+%
+%       Este es otro cuerpo de texto que sigue indentado 1cm.
+%   \end{myindent}
+\newenvironment{myindent}[1]
+{\begin{list}{}{\setlength{\leftmargin}{#1}}\item[]}{\end{list}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Viñetas personalizadas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % Símbolos para viñetas
+\usepackage{pifont}
+\renewcommand{\labelitemi}{\ding{112}}
+\renewcommand{\labelitemii}{\ding{71}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Referencias cruzadas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\fullrefuno}[1]{(véase \ref{#1}, pág. \pageref{#1})}
+\newcommand{\fullref}[2]{en \ref{#1}, pág. \pageref{#2}}
+\newcommand{\refdos}[2]{(véase \ref{#1} y  \ref{#2})}
+\newcommand{\fullreffig}[1]{Fig.~\ref{#1} pág. \pageref{#1}} 
+\newcommand{\fullreftab}[1]{Tab.~\ref{#1} pág. \pageref{#1}} 
+\newcommand{\fullrefcod}[1]{Cód.~\ref{#1} pág. \pageref{#1}} 
+\newcommand{\fullrefanx}[1]{(véase el Anexo~\ref{#1})} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Adjuntar archivos en el PDF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{attachfile}
+%\usepackage{keyval}
+%\usepackage{ifpdf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Separación Especial en Sílabas de palabras
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hyphenation{sa-ffer soft-ware Jesse Nielsen}
+%\tolerance=1
+%\emergencystretch=\maxdimen
+%\hyphenpenalty=10000
+%\hbadness=10000
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Anexos - Appendix 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquete para anexos
+\usepackage[toc,title,header]{appendix}
+\renewcommand{\appendixname}{Anexo}
+\renewcommand{\spanishappendixname}{Anexo}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+
+% Hack! para appendix nombre
+\makeatletter
+\newcommand*\updatechaptername{%
+\addtocontents{toc}{\protect\renewcommand*\protect\cftchappresnum{\@chapapp\ }
+\setlength{\cftchapnumwidth}{5em} 
+}
+}
+\makeatother
+
+% Hack! Appendix, problemas TOC en PDF
+\makeatletter
+\appto{\appendices}{\def\Hy@chapapp{Appendix}}
+\makeatother
+
