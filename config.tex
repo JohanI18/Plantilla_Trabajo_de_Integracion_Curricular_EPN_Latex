@@ -161,7 +161,7 @@
 %   de acuerdo al proyecto de titulación
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{float} % Posición flotante (ej. imágenes) 
-\usepackage[breaklinks]{hyperref} 
+\usepackage[breaklinks,hypertexnames=false]{hyperref} 
 \hypersetup{ %hiperenlaces
     pdfauthor={Nombre},
     pdftitle={Título},
@@ -392,7 +392,10 @@
  % Paquete necesario reemplazo de datatool-base.sty
 \usepackage{datatool}
  %%%% Los paquetes glossaries y xindy deben estar instalados
-\usepackage[toc,acronym,smallcaps,xindy]{glossaries}
+\usepackage[toc,acronym,xindy]{glossaries}
+% Mantener acrónimos en versalitas (la opción smallcaps fue removida en versiones nuevas)
+\renewcommand*{\acronymfont}[1]{\textsc{#1}}
+\makeglossaries
  % Convierte la primera letra de las palabras a Mayúscula
 \usepackage{mfirstuc}
  % Primera letra de palabras de "glosario" a Mayúsculas
